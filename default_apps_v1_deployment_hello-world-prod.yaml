@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    environment: prod
+  name: hello-world-prod
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      environment: prod
+  template:
+    metadata:
+      labels:
+        app: hello-world
+        environment: prod
+    spec:
+      containers:
+      - image: nginx:latest
+        name: nginx
+        ports:
+        - containerPort: 80
